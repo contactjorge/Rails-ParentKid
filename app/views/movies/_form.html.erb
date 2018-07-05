@@ -1,0 +1,52 @@
+<%= form_with(model: movie, local: true) do |form| %>
+	<% if movie.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+			<ul>
+				<% movie.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= form.label :movie_title %>
+		<%= form.text_field :movie_title %>
+  </div>
+
+	<div class="field">
+		<%= form.label :release_date %>
+		<%= form.date_select :release_date %>
+	</div>
+
+	<div class="field">
+		<%= form.label :rating_id %>
+		<%= form.select :rating_id, Rating.all.map {|r| [r.movie_rating, r.id]}, include_blank: true %>
+  </div>
+
+	<div class="field">
+		<%= form.label :genre_id %>
+		<%= form.collection_select :genre_id, Genre.all, :id, :movie_genre, include_blank: true %>
+  </div>
+
+	<%= form.nested_fields_for :actors do |actor| %>
+		<%= actor.remove_nested_fields_link %>
+		<%= actor.text_field :first_name %>
+		<%= actor.text_field :middle_name %>
+		<%= actor.text_field :last_name %>
+
+		<%= actor.radio_button :dob, "dob" %>
+
+		<%= actor.date_select :dob %>
+		<%= actor.date_select :dod %>
+	<% end %>
+
+	<%= form.add_nested_fields_link :actors %>
+
+
+	<div class="actions">
+		<%= form.submit %>
+	</div>
+<% end %>

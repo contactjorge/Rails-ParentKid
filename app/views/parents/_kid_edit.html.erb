@@ -1,0 +1,25 @@
+<!--  the id is generated from the helper methods using this template so always include it like so -->
+<div id="<%= id %>">
+  <!-- _destroy field: used for removing the record -->
+	<%= builder.hidden_field :_destroy, :class => 'cnf-removable' %>
+	<%= builder.hidden_field :id %> <!-- keeps the id inside this div  -->
+
+	<!-- data to be collected -->
+	<div class="form-group ">
+		<%= builder.label :first_name %>
+		<%= builder.text_field :first_name %>
+	</div>
+
+	<!-- data to be collected -->
+	<div class="form-group ">
+		<%= builder.label :dob %>
+		<%= builder.text_field :dob %>
+	</div>
+
+	<!-- Note: if you not wish for your users to edit this field after it is added
+	you could just display the content. -->
+
+	<!--  the remove button. make sure to pass the id as target or
+	 it will default to the parent DOM element when removing the item -->
+	<%= remove_entry_button "Remove", Kid, {:target => id} %>
+</div>

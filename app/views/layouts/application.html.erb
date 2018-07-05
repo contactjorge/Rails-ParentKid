@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ParentKid</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	<!-- application.html.erb -->
+	<%= javascript_pack_tag 'application' %>
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+	<nav class="container-fluid">
+		<div class="row">
+			<h1>Nav Goes here</h1>
+		</div>
+	</nav>
+
+	<header class="container-fluid"><h2>Header Goes Here</h2></header>
+
+	<main>
+		<section class="container">
+			<h3>Headline Goes Here</h3>
+		</section>
+
+		<article class="container">
+			<%= yield %>
+		</article>
+	</main>
+
+	<section class="container">
+		<div><h3>CTA goes here</h3></div>
+	</section>
+
+	<footer>
+		<h2>Footer Goes Here</h2>
+	</footer>
+</body>
+</html>
