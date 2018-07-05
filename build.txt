@@ -1,0 +1,13 @@
+
+rails g controller index about help
+rails g scaffold Parent email:string{128}:index last_name:string{64}:index first_name:string{64} num_kids:integer
+rails g model Kid first_name{128}:index dob:date parent:references:index
+, :dependent => :destroy
+
+rails g controller
+
+rails g model Rating movie_rating:string{12}:index rating_explanation:string{128}
+rails g model Genre movie_genre:string{32}:index
+rails g model Actor last_name:string{64}:index first_name:string{64} middle_name:string{64} gender:boolean dob:date:index dod:date:index
+rails g model Movie movie_title:string{128}:index release_date:date rating:references:index genre:references:index
+rails g migration CreateJoinTableActorsMovies actors movies
